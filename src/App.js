@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import RandomMemeGenerator from './components/RandomMemeGenerator';
+import CustomMemeGenerator from './components/CustomMemeGenerator';
 
 function App() {
+  const [view, setView] = useState('random');
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>ShyCat Meme Generator</h1>
+        <button onClick={() => setView('random')}>Random Meme</button>
+        <button onClick={() => setView('custom')}>Custom Meme</button>
       </header>
+      {view === 'random' ? <RandomMemeGenerator /> : <CustomMemeGenerator />}
     </div>
   );
 }
