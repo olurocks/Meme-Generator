@@ -1,30 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=OCR+A+Std&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
 .App {
   text-align: center;
+  background-color: #633220; /* Choose your preferred background color */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image: url('../public/images/bg.png');
+  background-size: auto; /* Keep the image's original size */
+  background-repeat: repeat; /* Repeat the image to cover the entire background */
+  background-attachment: fixed; /* Ensure the background image stays fixed during scroll */
+  background-position: top left; /* Start the repeating from the top left */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 .App-header {
-  background-color: #282c34;
+  background-image: url('../public/images/header.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 20px;
-  color: white;
+  height: 140px; /* Adjust the height as needed */
+  width: 100%;
+  overflow: hidden;
+}
+
+.App-content {
+  padding: 20px;
+  width: 100%; /* Ensure content takes the full width of the container */
+  box-sizing: border-box; /* Ensure padding is included in the element's total width */
+}
+
+.App-content h1 {
+  font-family: 'Permanent Marker', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #d59276;
+  text-transform: uppercase;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-shadow: 
+    3px 3px 0 #d59276,  /* Outline shadow for depth */
+    -3px 5px 0 #2a1717, 
+    1px -1px 0 #000000,
+    -1px 1px 0 #000000,
+    1px 1px 0 #000000;
+  background: linear-gradient(45deg, #ffde68, #ffcc00); /* Gradient color for more vivid effect */
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+
+.button-group {
+  margin: 20px 0;
 }
 
 button {
-  margin: 10px;
+  margin-bottom: 20px;
 }
 
-select {
-  margin: 10px;
+.btn {
+  font-family: 'OCR A Std', monospace;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bolder;
+  line-height: 100%;
+  color: #332020;
+  background: #b6977b;
+  border: 1px solid #673421;
+  box-shadow: -2px 3px 0 #d49276;
+  padding: 14px 36px;
+  border-radius: 15px;
+  text-transform: uppercase;
+  gap: 10px;
+  text-align: center;
+  outline: 0;
+  transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+  text-decoration: none;
 }
 
+.btn-head {
+  font-family: 'OCR A Std', monospace;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 100%;
+  color: #b29377;
+  background: #6a3724;
+  border: 1px solid #25120b;
+  box-shadow: 0 4px 0 #d49276;
+  padding: 14px 36px;
+  border-radius: 15px;
+  text-transform: uppercase;
+  gap: 10px;
+  text-align: center;
+  outline: 0;
+  transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+  text-decoration: none;
+  
+}
+
+.btn-head:hover {
+  background: #fcac8a; /* Adjust the hover background color if needed */
+  box-shadow: 0 4px 0 #342121;
+  color: #6a3724 ;
+}
+
+.btn:hover {
+  background: #fcac8a; /* Adjust the hover background color if needed */
+  box-shadow: 0 4px 0 #342121;
+}
+
+/* Styling for the Random Meme and Custom Meme buttons */
+.button-group .btn-head {
+  margin: 0 10px;
+}
 .random-meme-generator {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: 100vh;
+  padding-top: 30px; /* Adjust this value to move the button closer to the header */
 }
 
-button {
+.meme-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
   margin-bottom: 20px;
 }
 
@@ -49,12 +165,4 @@ button {
   cursor: pointer;
   width: 50px;
   height: 50px;
-}
-
-.meme-render {
-  flex: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
 }

@@ -8,12 +8,15 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>ShyCat Meme Generator</h1>
-        <button onClick={() => setView('random')}>Random Meme</button>
-        <button onClick={() => setView('custom')}>Custom Meme</button>
-      </header>
-      {view === 'random' ? <RandomMemeGenerator /> : <CustomMemeGenerator />}
+      <header className="App-header"></header>
+      <div className="App-content">
+        <h1>Meme Generator</h1>
+        <div className="button-group">
+          <button className='btn-head' onClick={() => setView('random')}>Random Meme</button>
+          <button className='btn-head' onClick={() => setView('custom')}>Custom Meme</button>
+        </div>
+        {view === 'random' ? <RandomMemeGenerator /> : <CustomMemeGenerator />}
+      </div>
     </div>
   );
 }

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Meme from "./Meme.js"
+import html2canvas from 'html2canvas';
 
 // const attributes = {
 //     backgrounds: ['space', 'forest', 'beach'],
@@ -25,18 +26,37 @@ const generateRandomMeme = () => {
 
 const RandomMemeGenerator = () => {
     const [meme, setMeme] = useState(null);
+    const memeRef = useRef(null)
 
     const handleGenerate = () => { 
         const memeAttributes = generateRandomMeme()
         setMeme(memeAttributes)
     };
 
+    const handleDownload = () => {
 
+
+        if (memeRef.current){
+        html2canvas(memeRef.current).then(canvas => {
+          const link = document.createElement('a');
+          link.download = 'meme.png';
+          link.href = canvas.toDataURL();
+          link.click();
+            });
+        }
+    };
+
+    useEffect(() => {
+        handleGenerate();
+    }, [])
 
     return (
         <div className="random-meme-generator">
-        <button onClick={handleGenerate}>Generate Random Meme</button>
-        {meme && <Meme {...meme} />}
+            <button className="btn" onClick={handleGenerate}>Generate Random Meme</button>
+            <div className="meme-wrapper" ref={memeRef} id="meme-canvas">
+                {meme && <Meme {...meme} />}
+            </div>
+            {meme && <button className="btn" onClick={handleDownload}>Download Meme</button>}
         </div>
     );
 };
