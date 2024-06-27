@@ -2,12 +2,6 @@ import React, { useState, useRef, useEffect } from "react";
 import Meme from "./Meme.js"
 import html2canvas from 'html2canvas';
 
-// const attributes = {
-//     backgrounds: ['space', 'forest', 'beach'],
-//     bodys: ['spacesuit', 'superhero', 'pirate'],
-//     jetpacks: ['classic', 'futuristic', 'steampunk']
-//   };
-
 function getRandomElemnt(arr) {
     return arr[Math.floor(Math.random() * arr.length)]
 }

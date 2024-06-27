@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=OCR+A+Std&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  margin: 0;
+  padding: 0;
+  min-height: 100vh; /* Full viewport height */
+}
+
 .App {
   text-align: center;
   background-color: #633220; /* Choose your preferred background color */
@@ -12,9 +20,6 @@
   background-repeat: repeat; /* Repeat the image to cover the entire background */
   background-attachment: fixed; /* Ensure the background image stays fixed during scroll */
   background-position: top left; /* Start the repeating from the top left */
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   overflow: hidden;
 }
 
@@ -88,6 +93,30 @@ button {
   text-decoration: none;
 }
 
+.custom-btn {
+  font-family: 'OCR A Std', monospace;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bolder;
+  line-height: 100%;
+  color: #332020;
+  background: #b6977b;
+  border: 1px solid #673421;
+  box-shadow: -2px 3px 0 #d49276;
+  padding: 14px 36px;
+  border-radius: 15px;
+  text-transform: uppercase;
+  gap: 10px;
+  text-align: center;
+  outline: 0;
+  transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 20px; /* Add margin to separate the button from the meme */
+}
+
 .btn-head {
   font-family: 'OCR A Std', monospace;
   display: inline-flex;
@@ -109,7 +138,6 @@ button {
   transition: background 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   cursor: pointer;
   text-decoration: none;
-  
 }
 
 .btn-head:hover {
@@ -123,10 +151,16 @@ button {
   box-shadow: 0 4px 0 #342121;
 }
 
+.custom-btn:hover {
+  background: #fcac8a; /* Adjust the hover background color if needed */
+  box-shadow: 0 4px 0 #342121;
+}
+
 /* Styling for the Random Meme and Custom Meme buttons */
 .button-group .btn-head {
   margin: 0 10px;
 }
+
 .random-meme-generator {
   display: flex;
   flex-direction: column;
@@ -144,25 +178,103 @@ button {
   margin-bottom: 20px;
 }
 
+.custom-meme-wrapper {
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 10px; /* Adjust the margin to create space between the meme and the button */
+  margin-right: 50px;
+  position: relative;
+}
+
 .custom-meme-generator {
   display: flex;
   height: 100vh;
+  padding: 20px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Add margin to create space between the meme and the button */
 }
 
 .attributes-panel {
   flex: 1;
+  flex-wrap: wrap;
   padding: 20px;
   overflow-y: auto;
+  background-color: #b6977b;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-right: 50px;
+  text-align: left;
+  max-width: 400px; /* Optional: Limit the maximum width of the attributes panel */
+  height: calc(86vh - 160px - 40px); /* Adjust height to fit within the available space */
+}
+
+.attributes-panel h3 {
+  font-family: 'OCR A Std', monospace;
+  font-size: 20px;
+  font-weight: bold;
+  color: #332020;
+  margin-bottom: 10px;
+}
+
+.attribute-row-container {
+  display: flex;
+  align-items: center;
 }
 
 .attribute-row {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.attribute-row::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
 }
 
 .attribute-row img {
   cursor: pointer;
   width: 50px;
   height: 50px;
+  border: 2px solid #d96340;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+  margin-top: 5px;
+  margin-left: 10px;
 }
+
+.scroll-btn {
+  background: #332020;
+  color: #c1a286;
+  border: none;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 0 5px;
+}
+
+.scroll-btn:hover {
+  background: #894b32;
+}
+
+.attribute-row img.selected {
+  border-color: #332020;
+}
+
+

@@ -1,116 +1,128 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import Meme from "./Meme.js";
+import html2canvas from 'html2canvas';
+// import { direction } from "html2canvas/dist/types/css/property-descriptors/direction.js";
 
-import Meme from "./Meme";
+const attributeOptions = {
+    backgrounds: ['Backgrounds/2.png', 'Backgrounds/3.png', 'Backgrounds/plain.png'],
+    bodys: ['Body/chef.png', 'Body/hood.png', 'Body/plain.png', 'Body/suit.png', 'Body/sweater.png'],
+    heads: ['Head/afro.png', 'Head/blonde.png', 'Head/chef.png', 'Head/flat.png', 'Head/maxshy.png', 'Head/mog.png', 'Head/shades.png', 'Head/shark.png', 'Head/wiff.png'],
+    walls: ['Wall/brick.png', 'Wall/building.png', 'Wall/bus.png', 'Wall/cake.png', 'Wall/cloud.png', 'Wall/door.png', 'Wall/ice.png', 'Wall/tree.png'],
+    bases: ['base.png']
+};
+
+const iconOptions = {
+    backgrounds: ['Backgrounds/2.png', 'Backgrounds/3.png', 'Backgrounds/plain.png'],
+    bodys: ['Body/chef.png', 'props/hood.png', 'props/plain.png', 'props/suit.png', 'Body/sweater.png'],
+    heads: ['props/afro.png', 'props/blonde.png', 'props/chef.png', 'props/flat.png', 'props/maxshy.png', 'props/mog.png', 'props/shades.png', 'props/shark.png', 'props/wiff.png'],
+    walls: ['Wall/brick.png', 'Wall/building.png', 'Wall/bus.png', 'Wall/cake.png', 'Wall/cloud.png', 'Wall/door.png', 'Wall/ice.png', 'Wall/tree.png'],
+    bases: ['base.png']
+};
 
 const CustomMemeGenerator = () => {
-    const [ attributes, setAttributes ] = useState({
-        background: 'Backgrounds/2.png',
-        body: 'Body/plain.png',
-        head: 'Head/mog.png',
-        wall: 'Wall/building.png',
-        base: 'base.png'
+    const [meme, setMeme] = useState({
+        background: attributeOptions.backgrounds[0],
+        body: attributeOptions.bodys[0],
+        head: attributeOptions.heads[0],
+        wall: attributeOptions.walls[0],
+        base: attributeOptions.bases[0]
     });
 
-    // const handleAttributeChange = (e) => {
-    //     const { name, value } = e.target;
-    //     setAttributes((prevAttributes) => ({
-    //         ...prevAttributes,
-    //         [name]: value,
-    //     }));
-    // };
+    const [overflowingRows, setOverflowingRows] = useState({});
+    const memeRef = useRef(null);
+    const downloadButtonRef = useRef(null)
+    const rowRef = useRef(Object.keys(attributeOptions).reduce((acc, key) => {
+        acc[key] = React.createRef();
+        return acc;
+    }, {}));
+
+
+    const checkOverflow = () => {
+        const newOverflowingRows = {};
+        Object.keys(rowRef.current).forEach(key => {
+            const element = rowRef.current[key].current;
+
+            if (element && element.scrollWidth > element.clientWidth) {
+                newOverflowingRows[key] = true;
+            } else {
+                newOverflowingRows[key] = false;
+            }
+        });
+        setOverflowingRows(newOverflowingRows);
+    };
+
+    useEffect(() => {
+        
+        setTimeout(() => {
+            checkOverflow();
+        }, 100);
+        checkOverflow();
+        window.addEventListener("resize", checkOverflow);
+        return () => window.removeEventListener("resize", checkOverflow);
+    }, []);
+
+        useEffect(() => {
+        checkOverflow();
+    }, [meme]);
+
+
+    const handleAttributeChange = (attribute, value) => {
+        setMeme(prevMeme => ({ ...prevMeme, [attribute]: value }));
+    };
+
+    const handleDownload = () => {
+        if (memeRef.current && downloadButtonRef.current) {
+            downloadButtonRef.current.style.display = 'none'
+            html2canvas(memeRef.current, { backgroundColor: null, button: null }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'meme.png';
+                link.href = canvas.toDataURL();
+                link.click();
+
+                downloadButtonRef.current.style.display = "inline-flex"
+            });
+        }
+    };
+
+    const scrollRow = (key, direction) => {
+        if (rowRef.current[key] && rowRef.current[key].current) {
+            rowRef.current[key].current.scrollBy({ left: direction * 100, behavior: 'smooth' });
+        }
+    };
 
     return (
-        <div>
-            {/* <select name="background" onChange={handleAttributeChange}>
-                <option value="Backgrounds/2.png">Bg 1</option>
-                <option value="Backgrounds/3.png">Bg 2</option>
-                <option value="Backgrounds/plain.png">Bg 3</option>
-            </select>
-
-            <select name="body" onChange={handleAttributeChange}>
-                <option value="Body/chef.png">body1</option>
-                <option value="Body/hood.png">body2</option>
-                <option value="Body/plain.png">body3</option>
-                <option value="Body/suit.png">body4</option>
-                <option value="Body/sweater.png">body5</option>
-            </select>
-
-            <select name="head" onChange={handleAttributeChange}>
-                <option value="Head/Afro.png">head1</option>
-                <option value="Head/blonde.png">head 2</option>
-                <option value="Head/flat.png">head3</option>
-                <option value="Head/maxshy.png">head 4</option>
-                <option value="Head/mog.png">head 5</option>
-                <option value="Head/shades.png">head 6</option>
-                <option value="Head/shark.png">head 7</option>
-                <option value="Head/wiff.png">head 8</option>
-                <option value="Head/chef.png">head 9</option>
-            </select>
-
-            <select name="wall" onChange={handleAttributeChange}>
-                <option value="Wall/brick.png"></option>
-                <option value="Wall/building.png"></option>
-                <option value="Wall/bus.png"></option>
-                <option value="Wall/cloud.png"></option>
-                <option value="Wall/door.png"></option>
-                <option value="Wall/ice.png"></option>
-                <option value="Wall/tree.png"></option>
-                <option value="Wall/cake.png"></option>
-            </select> */}
-            <div className="custom-meme-generator">
-                <div className="attributes-panel">
-                    <h3>Backgrounds</h3>
-                    <div className="attribute-row">
-                        <img src="./images/Backgrounds/2.png" alt ="background1" onClick={()=>setAttributes({...attributes, background: 'Backgrounds/2.png'})} />
-                        <img src="./images/Backgrounds/3.png" alt ="background2" onClick={()=>setAttributes({...attributes, background: 'Backgrounds/3.png'})} />
-                        <img src="./images/Backgrounds/plain.png" alt ="background1" onClick={()=>setAttributes({...attributes, background: 'Backgrounds/plain.png'})} />
-                    </div>
-
-                    <h3>Base</h3>
-                    <div className="attribute-row">
-                        <img src="./images/base.png" alt ="base" onClick={()=>setAttributes({...attributes, base: 'base.png'})} />
-                    </div>
-
-                    <h3>Outfits</h3>
-                    <div className="attribute-row">
-                        <img src="./images/body/chef.png" alt ="body1" onClick={()=>setAttributes({...attributes, body: 'body/chef.png'})} />
-                        <img src="./images/body/hood.png" alt ="body2" onClick={()=>setAttributes({...attributes, body: 'body/hood.png'})} />
-                        <img src="./images/body/plain.png" alt ="body3" onClick={()=>setAttributes({...attributes, body: 'body/plain.png'})} />
-                        <img src="./images/body/suit.png" alt ="body4" onClick={()=>setAttributes({...attributes, body: 'body/suit.png'})} />
-                        <img src="./images/body/sweater.png" alt ="body" onClick={()=>setAttributes({...attributes, body: 'body/sweater.png'})} />
-                    </div>
-
-                    <h3>Head</h3>
-                    <div className="attribute-row">
-                        <img src="./images/head/chef.png" alt ="head1" onClick={()=>setAttributes({...attributes, head: 'head/chef.png'})} />
-                        <img src="./images/head/blonde.png" alt ="head2" onClick={()=>setAttributes({...attributes, head: 'head/blonde.png'})} />
-                        <img src="./images/head/afro.png" alt ="head3" onClick={()=>setAttributes({...attributes, head: 'head/afro.png'})} />
-                        <img src="./images/head/flat.png" alt ="head4" onClick={()=>setAttributes({...attributes, head: 'head/flat.png'})} />
-                        <img src="./images/head/shades.png" alt ="head" onClick={()=>setAttributes({...attributes, head: 'head/shades.png'})} />
-                        <img src="./images/head/maxshy.png" alt ="head" onClick={()=>setAttributes({...attributes, head: 'head/maxshy.png'})} />
-                        <img src="./images/head/mog.png" alt ="head" onClick={()=>setAttributes({...attributes, head: 'head/mog.png'})} />
-                        <img src="./images/head/shark.png" alt ="head" onClick={()=>setAttributes({...attributes, head: 'head/shark.png'})} />
-                        <img src="./images/head/wiff.png" alt ="head" onClick={()=>setAttributes({...attributes, head: 'head/wiff.png'})} />
-                    </div>
-
-                    <h3>Wall</h3>
-                    <div className="attribute-row">
-                        <img src="./images/wall/brick.png" alt ="wall1" onClick={()=>setAttributes({...attributes, wall: 'wall/brick.png'})} />
-                        <img src="./images/wall/building.png" alt ="wall2" onClick={()=>setAttributes({...attributes, wall: 'wall/building.png'})} />
-                        <img src="./images/wall/bus.png" alt ="wall3" onClick={()=>setAttributes({...attributes, wall: 'wall/bus.png'})} />
-                        <img src="./images/wall/cake.png" alt ="wall4" onClick={()=>setAttributes({...attributes, wall: 'wall/cake.png'})} />
-                        <img src="./images/wall/cloud.png" alt ="wall" onClick={()=>setAttributes({...attributes, wall: 'wall/cloud.png'})} />
-                        <img src="./images/wall/door.png" alt ="wall" onClick={()=>setAttributes({...attributes, wall: 'wall/door.png'})} />
-                        <img src="./images/wall/ice.png" alt ="wall" onClick={()=>setAttributes({...attributes, wall: 'wall/ice.png'})} />
-                        <img src="./images/wall/tree.png" alt ="wall" onClick={()=>setAttributes({...attributes, wall: 'wall/tree.png'})} />
-                    </div>
-                </div>
-
+        <div className="custom-meme-generator">
+            <div className="attributes-panel">
+                {Object.keys(attributeOptions).map(attribute => {
+                    return (
+                        <div key={attribute}>
+                            <h3>{attribute.charAt(0).toUpperCase() + attribute.slice(1)}</h3>
+                            <div className="attribute-row-container">
+                                {overflowingRows[attribute] &&(<button className="scroll-btn" onClick={() => scrollRow(attribute, -1)}>&lt;</button>)}
+                                <div className="attribute-row" ref={rowRef.current[attribute]}>
+                                    {attributeOptions[attribute].map((item, index) => (
+                                        <img
+                                            key={item}
+                                            src={`${process.env.PUBLIC_URL}/images/${iconOptions[attribute][index]}`}
+                                            alt={item}
+                                            onClick={() => handleAttributeChange(attribute.slice(0, -1), item)}
+                                            className={meme[attribute.slice(0, -1)] === item ? 'selected' : ''}
+                                        />
+                                    ))}
+                                </div>
+                                {overflowingRows[attribute] &&(<button className="scroll-btn" onClick={() => scrollRow(attribute, 1)}>&gt;</button>)}
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
-            <Meme {...attributes} />
+            <div className="custom-meme-wrapper" ref={memeRef}>
+                <Meme {...meme} />
+                <button className="custom-btn" ref={downloadButtonRef} onClick={handleDownload}>Download Meme</button>
+            </div>
         </div>
-    )
-}
+    );
+};
+
 
 export default CustomMemeGenerator;
-
