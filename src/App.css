@@ -281,7 +281,7 @@ button {
 /* Responsive adjustments for mobile */
 @media (max-width: 768px) {
   .App-header {
-    height: auto;
+    height: 140px;
     padding: 10px;
   }
 
