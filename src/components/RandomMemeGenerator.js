@@ -31,12 +31,12 @@ const RandomMemeGenerator = () => {
 
 
         if (memeRef.current){
-        html2canvas(memeRef.current, {backgroundColor: null}).then(canvas => {
-          const link = document.createElement('a');
-          link.download = 'meme.png';
-          link.href = canvas.toDataURL();
-          link.click();
-            });
+            html2canvas(memeRef.current).then(canvas => {
+            const link = document.createElement('a');
+            link.download = 'meme.png';
+            link.href = canvas.toDataURL();
+            link.click();
+                });
         }
     };
 
