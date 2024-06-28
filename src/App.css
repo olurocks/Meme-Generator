@@ -1,14 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=OCR+A+Std&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
-html, body {
-  background-image: url('../public/images/bg.png');
-  width: 100%;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  margin: 0;
-  padding: 0;
-  min-height: 100vh; /* Full viewport height */
-}
+
 
 .App {
   text-align: center;
