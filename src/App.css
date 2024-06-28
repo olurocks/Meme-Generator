@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 
 html, body {
+  background-image: url('../public/images/bg.png');
   width: 100%;
   overflow-x: hidden; /* Prevent horizontal scrolling */
   margin: 0;
@@ -278,3 +279,58 @@ button {
 }
 
 
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .App-header {
+    height: 140px;
+    padding: 10px;
+  }
+
+  .App-content h1 {
+    font-size: 32px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    margin: 10px 0;
+  }
+
+  .btn-head {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+
+  .btn, .custom-btn {
+    font-size: 18px;
+    padding: 10px 20px;
+  }
+
+  .attributes-panel {
+    margin-right: 20px;
+    max-width: 100%;
+  }
+
+  .scroll-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .scroll-btn svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .attribute-row img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .custom-meme-generator {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .custom-meme-wrapper {
+    margin-right: 0;
+  }
+}
