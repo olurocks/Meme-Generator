@@ -12,11 +12,11 @@ html, body {
 
 .App {
   text-align: center;
+  background-image: url('../public/images/bg.png');
   background-color: #633220; /* Choose your preferred background color */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-image: url('../public/images/bg.png');
   background-size: auto; /* Keep the image's original size */
   background-repeat: repeat; /* Repeat the image to cover the entire background */
   background-attachment: fixed; /* Ensure the background image stays fixed during scroll */
