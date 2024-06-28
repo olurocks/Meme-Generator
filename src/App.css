@@ -12,7 +12,6 @@ html, body {
 
 .App {
   text-align: center;
-  background-color: #633220; /* Choose your preferred background color */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
