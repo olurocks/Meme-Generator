@@ -37,6 +37,8 @@ const RandomMemeGenerator = () => {
             link.href = canvas.toDataURL();
             link.click();
                 });
+
+            document.body.style.backgroundImage = 'url(../../public/images/bg.png)';
         }
     };
 
