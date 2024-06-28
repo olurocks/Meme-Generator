@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Meme from "./Meme.js";
 import html2canvas from 'html2canvas';
-// import { direction } from "html2canvas/dist/types/css/property-descriptors/direction.js";
 
 const attributeOptions = {
     backgrounds: ['Backgrounds/2.png', 'Backgrounds/3.png', 'Backgrounds/plain.png'],
@@ -72,14 +71,15 @@ const CustomMemeGenerator = () => {
 
     const handleDownload = () => {
         if (memeRef.current && downloadButtonRef.current) {
-            downloadButtonRef.current.style.display = 'none'
-            html2canvas(memeRef.current, { backgroundColor: null, button: null }).then(canvas => {
+            const originalBackground = document.body.style.background; // Save the original background
+            downloadButtonRef.current.style.display = 'none';
+            html2canvas(memeRef.current, { backgroundColor: null }).then(canvas => {
                 const link = document.createElement('a');
                 link.download = 'meme.png';
                 link.href = canvas.toDataURL();
                 link.click();
-
-                downloadButtonRef.current.style.display = "inline-flex"
+                document.body.style.background = originalBackground; // Restore the original background
+                downloadButtonRef.current.style.display = "inline-flex";
             });
         }
     };
