@@ -175,6 +175,16 @@ button {
   box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
 }
 
+.meme-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+}
+
 .custom-meme-wrapper {
   display: flex;
   flex-direction: column; /* Stack items vertically */

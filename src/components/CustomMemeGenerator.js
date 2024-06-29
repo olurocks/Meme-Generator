@@ -73,7 +73,7 @@ const CustomMemeGenerator = () => {
     };
 
     const handleDownload = () => {
-        if (memeRef.current && downloadButtonRef.current) {
+        if (memeRef.current) {
             // downloadButtonRef.current.style.display = 'none'
             html2canvas(memeRef.current, {useCORS:true, allowTaint:true, backgroundColor: null, button: null }).then(canvas => {
                 const link = document.createElement('a');
@@ -90,36 +90,6 @@ const CustomMemeGenerator = () => {
             });
         }
     };
-
-
-    // const handleDownload = () => {
-    //     if (memeRef.current && downloadButtonRef.current) {
-    //         // Set the background image of the meme container
-    //         memeRef.current.style.backgroundImage = window.getComputedStyle(document.body).backgroundImage;
-    //         memeRef.current.style.paddingBottom = '20px'; // Add padding to avoid cutting off the bottom
-
-
-    //         downloadButtonRef.current.style.display = 'none';
-    //         domtoimage.toPng(memeRef.current)
-    //             .then((dataUrl) => {
-    //                 const link = document.createElement('a');
-    //                 link.download = 'shycat-meme.png';
-    //                 link.href = dataUrl;
-    //                 link.click();
-
-    //                 downloadButtonRef.current.style.display = "inline-flex";
-    //                 // Remove the background image after download
-    //                 memeRef.current.style.backgroundImage = '';
-    //                 memeRef.current.style.paddingBottom = '0';
-
-    //             })
-    //             .catch((error) => {
-    //                 console.error('Error capturing meme image', error);
-    //                 downloadButtonRef.current.style.display = "inline-flex";
-    //                 memeRef.current.style.backgroundImage = '';
-    //             });
-    //     }
-    // };
 
     
     
@@ -155,9 +125,12 @@ const CustomMemeGenerator = () => {
                     );
                 })}
             </div>
-            <div className="custom-meme-wrapper" ref={memeRef}>
-                <Meme {...meme} />
+            <div className="custom-meme-wrapper">
+                <div ref={memeRef} id="meme-canvas" className="meme-container" style={{ paddingBottom: '20px' }}>
+                {meme && <Meme {...meme} />}
+                </div>
                 <button className="custom-btn" ref={downloadButtonRef} onClick={handleDownload}>Download Meme</button>
+
             </div>
         </div>
     );
