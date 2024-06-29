@@ -6,7 +6,7 @@ import html2canvas from 'html2canvas';
 const attributeOptions = {
     backgrounds: ['Backgrounds/2.png', 'Backgrounds/3.png', 'Backgrounds/plain.png'],
     bodys: ['Body/chef.png', 'Body/hood.png', 'Body/plain.png', 'Body/suit.png', 'Body/sweater.png'],
-    heads: ['Head/afro.png', 'Head/blonde.png', 'Head/chef.png', 'Head/flat.png', 'Head/maxshy.png', 'Head/mog.png', 'Head/shades.png', 'Head/shark.png', 'Head/wiff.png'],
+    heads: ['Head/Afro.png', 'Head/blonde.png', 'Head/chef.png', 'Head/flat.png', 'Head/maxshy.png', 'Head/mog.png', 'Head/shades.png', 'Head/shark.png', 'Head/wiff.png'],
     walls: ['Wall/brick.png', 'Wall/building.png', 'Wall/bus.png', 'Wall/cake.png', 'Wall/cloud.png', 'Wall/door.png', 'Wall/ice.png', 'Wall/tree.png'],
     bases: ['base.png']
 };
