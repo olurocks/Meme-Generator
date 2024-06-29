@@ -72,63 +72,56 @@ const CustomMemeGenerator = () => {
         setMeme(prevMeme => ({ ...prevMeme, [attribute]: value }));
     };
 
+    const handleDownload = () => {
+        if (memeRef.current && downloadButtonRef.current) {
+            downloadButtonRef.current.style.display = 'none'
+            html2canvas(memeRef.current, {useCORS:true, allowTaint:true, backgroundColor: null, button: null }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'meme.png';
+                link.href = canvas.toDataURL();
+                link.click();
+
+                downloadButtonRef.current.style.display = "inline-flex"
+                memeRef.current.style.backgroundImage = '';
+            }).catch((error) => {
+                console.error('Error capturing meme image', error);
+                downloadButtonRef.current.style.display = "inline-flex";
+                memeRef.current.style.backgroundImage = '';
+            });
+        }
+    };
+
+
     // const handleDownload = () => {
     //     if (memeRef.current && downloadButtonRef.current) {
-    //         downloadButtonRef.current.style.display = 'none'
-    //         // html2canvas(memeRef.current, { backgroundColor: null, button: null }).then(canvas => {
-    //         //     const link = document.createElement('a');
-    //         //     link.download = 'meme.png';
-    //         //     link.href = canvas.toDataURL();
-    //         //     link.click();
+    //         // Set the background image of the meme container
+    //         memeRef.current.style.backgroundImage = window.getComputedStyle(document.body).backgroundImage;
+    //         memeRef.current.style.paddingBottom = '20px'; // Add padding to avoid cutting off the bottom
 
-    //         //     downloadButtonRef.current.style.display = "inline-flex"
-    //         // });
-    //         domtoimage.toPng(memeRef.current).then((dataUrl) => {
-    //             const link = document.createElement('a');
-    //             link.download = 'shycat-meme.png';
-    //             link.href = dataUrl;
-    //             link.click()
 
-    //             downloadButtonRef.current.style.display = "inline-flex";
-    //             // Remove the background image after download
-    //             memeRef.current.style.backgroundImage = '';
-    //         }) .catch((error) => {
-    //             console.error('Error capturing meme image', error);
-    //             downloadButtonRef.current.style.display = "inline-flex";
-    //             memeRef.current.style.backgroundImage = '';
-    //         });
+    //         downloadButtonRef.current.style.display = 'none';
+    //         domtoimage.toPng(memeRef.current)
+    //             .then((dataUrl) => {
+    //                 const link = document.createElement('a');
+    //                 link.download = 'shycat-meme.png';
+    //                 link.href = dataUrl;
+    //                 link.click();
+
+    //                 downloadButtonRef.current.style.display = "inline-flex";
+    //                 // Remove the background image after download
+    //                 memeRef.current.style.backgroundImage = '';
+    //                 memeRef.current.style.paddingBottom = '0';
+
+    //             })
+    //             .catch((error) => {
+    //                 console.error('Error capturing meme image', error);
+    //                 downloadButtonRef.current.style.display = "inline-flex";
+    //                 memeRef.current.style.backgroundImage = '';
+    //             });
     //     }
     // };
 
-
-    const handleDownload = () => {
-        if (memeRef.current && downloadButtonRef.current) {
-            // Set the background image of the meme container
-            memeRef.current.style.backgroundImage = window.getComputedStyle(document.body).backgroundImage;
-            memeRef.current.style.paddingBottom = '20px'; // Add padding to avoid cutting off the bottom
-
-
-            downloadButtonRef.current.style.display = 'none';
-            domtoimage.toPng(memeRef.current)
-                .then((dataUrl) => {
-                    const link = document.createElement('a');
-                    link.download = 'shycat-meme.png';
-                    link.href = dataUrl;
-                    link.click();
-
-                    downloadButtonRef.current.style.display = "inline-flex";
-                    // Remove the background image after download
-                    memeRef.current.style.backgroundImage = '';
-                    memeRef.current.style.paddingBottom = '0';
-
-                })
-                .catch((error) => {
-                    console.error('Error capturing meme image', error);
-                    downloadButtonRef.current.style.display = "inline-flex";
-                    memeRef.current.style.backgroundImage = '';
-                });
-        }
-    };
+    
     
     const scrollRow = (key, direction) => {
         if (rowRef.current[key] && rowRef.current[key].current) {
