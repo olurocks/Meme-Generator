@@ -74,7 +74,7 @@ const CustomMemeGenerator = () => {
 
     const handleDownload = () => {
         if (memeRef.current && downloadButtonRef.current) {
-            downloadButtonRef.current.style.display = 'none'
+            // downloadButtonRef.current.style.display = 'none'
             html2canvas(memeRef.current, {useCORS:true, allowTaint:true, backgroundColor: null, button: null }).then(canvas => {
                 const link = document.createElement('a');
                 link.download = 'meme.png';
