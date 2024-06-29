@@ -170,6 +170,9 @@ button {
   align-items: center;
   margin-top: 20px;
   margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
 }
 
 .custom-meme-wrapper {
@@ -333,6 +336,10 @@ button {
     width: 100%;
     margin-right: 0;
   }
+  .custom-meme-wrapper {
+    margin-right: 0;
+    padding: 10px;
+  }
 }
 
 /* Additional styles for even smaller screens */
@@ -384,7 +391,6 @@ button {
     margin-right: 0;
     padding: 10px;
   }
-
   .meme-wrapper {
     padding: 10px;
   }

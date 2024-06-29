@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Meme from "./Meme.js";
-import domtoimage from 'dom-to-image';
+import domtoimage from 'dom-to-image-more';
 
 function getRandomElemnt(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
