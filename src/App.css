@@ -326,4 +326,61 @@ button {
   .custom-meme-wrapper {
     margin-right: 0;
   }
+
+  .meme-wrapper {
+    max-width: 100%; /* Allow the meme-wrapper to use the full width on mobile */
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+/* Additional styles for even smaller screens */
+@media (max-width: 480px) {
+  .App-header {
+    height: 120px;
+    padding: 5px;
+  }
+
+  .App-content h1 {
+    font-size: 24px;
+  }
+
+  .button-group {
+    flex-direction: column;
+    margin: 5px 0;
+  }
+
+  .btn-head {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  .btn, .custom-btn {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+
+  .attributes-panel {
+    padding: 10px;
+    margin-right: 10px;
+  }
+
+  .attribute-row img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .scroll-btn {
+    width: 25px;
+    height: 25px;
+  }
+
+  .scroll-btn svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .meme-wrapper {
+    padding: 10px;
+  }
 }
