@@ -81,7 +81,7 @@ const CustomMemeGenerator = () => {
                 link.href = canvas.toDataURL();
                 link.click();
 
-                downloadButtonRef.current.style.display = "inline-flex"
+                // downloadButtonRef.current.style.display = "inline-flex"
                 memeRef.current.style.backgroundImage = '';
             }).catch((error) => {
                 console.error('Error capturing meme image', error);
