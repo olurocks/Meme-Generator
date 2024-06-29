@@ -325,6 +325,7 @@ button {
 
   .custom-meme-wrapper {
     margin-right: 0;
+    padding: 10px;
   }
 
   .meme-wrapper {
@@ -378,6 +379,10 @@ button {
   .scroll-btn svg {
     width: 12px;
     height: 12px;
+  }
+  .custom-meme-wrapper {
+    margin-right: 0;
+    padding: 10px;
   }
 
   .meme-wrapper {
