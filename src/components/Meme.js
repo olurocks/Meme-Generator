@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Meme = ({ background, base, body, head, wall }) => {
+const Meme = ({ background, base, body, head, eye, wall }) => {
   return (
     <div style={{ 
         position: 'relative', 
@@ -13,8 +13,9 @@ const Meme = ({ background, base, body, head, wall }) => {
       }}>
       <img src={`${process.env.PUBLIC_URL}/images/${background}`} alt="background" style={{ position: 'absolute', top:0, left: 0, width: '100%', height: '100%' }} />
       <img src={`${process.env.PUBLIC_URL}/images/${base}`} alt="base" style={{ position: 'absolute', top:0, left: 0, width: '100%', height: '100%' }} />
-      <img src={`${process.env.PUBLIC_URL}/images/${body}`} alt="outfit" style={{ position: 'absolute', top:0, left: 0, width: '100%', height: '100%' }} />
       <img src={`${process.env.PUBLIC_URL}/images/${head}`} alt="head" style={{ position: 'absolute', top:0, left: 0, width: '100%', height: '100%' }} />
+      <img src={`${process.env.PUBLIC_URL}/images/${eye}`} alt="eye" style={{ position: 'absolute', top:0, left: 0, width: '100%', height: '100%' }} />
+      <img src={`${process.env.PUBLIC_URL}/images/${body}`} alt="outfit" style={{ position: 'absolute', top:0, left: 0, width: '100%', height: '100%' }} />
       <img src={`${process.env.PUBLIC_URL}/images/${wall}`} alt="wall" style={{ position: 'absolute', top:0, left: 0, width: '100%', height: '100%' }} />
     </div>
   );

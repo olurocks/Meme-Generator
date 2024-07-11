@@ -1,24 +1,27 @@
 import React, { useState, useRef, useEffect } from "react";
 import Meme from "./Meme.js";
 import html2canvas from 'html2canvas';
-import domtoimage from 'dom-to-image';
+// import domtoimage from 'dom-to-image';
 
 // import { direction } from "html2canvas/dist/types/css/property-descriptors/direction.js";
 
 const attributeOptions = {
     backgrounds: ['Backgrounds/2.png', 'Backgrounds/3.png', 'Backgrounds/plain.png'],
     bodys: ['Body/chef.png', 'Body/hood.png', 'Body/plain.png', 'Body/suit.png', 'Body/sweater.png'],
-    heads: ['Head/afro.png', 'Head/blonde.png', 'Head/chef.png', 'Head/flat.png', 'Head/maxshy.png', 'Head/mog.png', 'Head/shades.png', 'Head/shark.png', 'Head/wiff.png'],
+    heads: ['Head/afro.png', 'Head/blonde.png', 'Head/chef.png', 'Head/flat.png', 'Head/shark.png', 'Head/wiff.png',  'Head/construction.png', 'Head/crown.png'],
     walls: ['Wall/brick.png', 'Wall/building.png', 'Wall/bus.png', 'Wall/cake.png', 'Wall/cloud.png', 'Wall/door.png', 'Wall/ice.png', 'Wall/tree.png'],
-    bases: ['base.png']
+    bases: ['base.png'],
+    eyes: ['Eye/maxshy.png', 'Eye/mog.png', 'Eye/shades.png']
 };
 
 const iconOptions = {
     backgrounds: ['Backgrounds/2.png', 'Backgrounds/3.png', 'Backgrounds/plain.png'],
     bodys: ['Body/chef.png', 'props/hood.png', 'props/plain.png', 'props/suit.png', 'Body/sweater.png'],
-    heads: ['props/afro.png', 'props/blonde.png', 'props/chef.png', 'props/flat.png', 'props/maxshy.png', 'props/mog.png', 'props/shades.png', 'props/shark.png', 'props/wiff.png'],
+    heads: ['props/afro.png', 'props/blonde.png', 'props/chef.png', 'props/flat.png', 'props/shark.png', 'props/wiff.png', 'props/construction.png', 'props/crown.png',],
     walls: ['Wall/brick.png', 'Wall/building.png', 'Wall/bus.png', 'Wall/cake.png', 'Wall/cloud.png', 'Wall/door.png', 'Wall/ice.png', 'Wall/tree.png'],
-    bases: ['base.png']
+    bases: ['base.png'],
+    eyes: ['props/maxshy.png', 'props/mog.png', 'props/shades.png']
+
 };
 
 const CustomMemeGenerator = () => {
@@ -27,7 +30,8 @@ const CustomMemeGenerator = () => {
         body: attributeOptions.bodys[0],
         head: attributeOptions.heads[0],
         wall: attributeOptions.walls[0],
-        base: attributeOptions.bases[0]
+        base: attributeOptions.bases[0],
+        eye: attributeOptions.eyes[0]
     });
 
     const [overflowingRows, setOverflowingRows] = useState({});
