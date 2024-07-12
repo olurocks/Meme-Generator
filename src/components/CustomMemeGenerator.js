@@ -8,7 +8,7 @@ import html2canvas from 'html2canvas';
 const attributeOptions = {
     backgrounds: ['Backgrounds/2.png', 'Backgrounds/3.png', 'Backgrounds/plain.png'],
     bodys: ['Body/chef.png', 'Body/hood.png', 'Body/plain.png', 'Body/suit.png', 'Body/sweater.png'],
-    heads: ['Head/afro.png', 'Head/blonde.png', 'Head/chef.png', 'Head/flat.png', 'Head/shark.png', 'Head/wiff.png',  'Head/construction.png', 'Head/crown.png'],
+    heads: ['Head/afro.png', 'Head/blonde.png', 'Head/chef.png', 'Head/flat.png', 'Head/shark.png', 'Head/wiff.png',  'Head/construction.png', 'Head/crown.png', 'Head/gladiator.png', 'Head/pirate.png', 'Head/redcross.png', 'Head/sailor.png'],
     walls: ['Wall/brick.png', 'Wall/building.png', 'Wall/bus.png', 'Wall/cake.png', 'Wall/cloud.png', 'Wall/door.png', 'Wall/ice.png', 'Wall/tree.png'],
     bases: ['base.png'],
     eyes: ['Eye/maxshy.png', 'Eye/mog.png', 'Eye/shades.png']
@@ -17,7 +17,7 @@ const attributeOptions = {
 const iconOptions = {
     backgrounds: ['Backgrounds/2.png', 'Backgrounds/3.png', 'Backgrounds/plain.png'],
     bodys: ['Body/chef.png', 'props/hood.png', 'props/plain.png', 'props/suit.png', 'Body/sweater.png'],
-    heads: ['props/afro.png', 'props/blonde.png', 'props/chef.png', 'props/flat.png', 'props/shark.png', 'props/wiff.png', 'props/construction.png', 'props/crown.png',],
+    heads: ['props/afro.png', 'props/blonde.png', 'props/chef.png', 'props/flat.png', 'props/shark.png', 'props/wiff.png', 'props/construction.png', 'props/crown.png','props/gladiator.png', 'props/pirate.png', 'props/redcross.png', 'props/sailor.png'],
     walls: ['Wall/brick.png', 'Wall/building.png', 'Wall/bus.png', 'Wall/cake.png', 'Wall/cloud.png', 'Wall/door.png', 'Wall/ice.png', 'Wall/tree.png'],
     bases: ['base.png'],
     eyes: ['props/maxshy.png', 'props/mog.png', 'props/shades.png']
