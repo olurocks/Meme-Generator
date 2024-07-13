@@ -8,10 +8,10 @@ function getRandomElemnt(arr) {
 
 const generateRandomMeme = () => {
     const background = getRandomElemnt(['Backgrounds/2.png', 'Backgrounds/3.png', 'Backgrounds/plain.png']);
-    const body = getRandomElemnt(['Body/chef.png', 'Body/hood.png', 'Body/plain.png', 'Body/suit.png', 'Body/sweater.png']);
-    const head = getRandomElemnt(['Head/afro.png', 'Head/blonde.png', 'Head/chef.png', 'Head/flat.png', 'Head/shark.png', 'Head/wiff.png',  'Head/construction.png', 'Head/crown.png', 'Head/gladiator.png', 'Head/pirate.png', 'Head/redcross.png', 'Head/sailor.png']);
+    const body = getRandomElemnt(['Body/chef.png', 'Body/hood.png', 'Body/plain.png', 'Body/suit.png', 'Body/sweater.png', 'empty.png']);
+    const head = getRandomElemnt(['Head/afro.png', 'Head/blonde.png', 'Head/chef.png', 'Head/flat.png', 'Head/shark.png', 'Head/wiff.png',  'Head/construction.png', 'Head/crown.png', 'Head/gladiator.png', 'Head/pirate.png', 'Head/redcross.png', 'Head/sailor.png', 'empty.png']);
     const wall = getRandomElemnt(['Wall/brick.png', 'Wall/building.png', 'Wall/bus.png', 'Wall/cake.png', 'Wall/cloud.png', 'Wall/door.png', 'Wall/ice.png', 'Wall/tree.png']);
-    const eye = getRandomElemnt(['Eye/maxshy.png', 'Eye/mog.png', 'Eye/shades.png'])
+    const eye = getRandomElemnt(['Eye/maxshy.png', 'Eye/mog.png', 'Eye/shades.png', 'empty.png'])
     const base = getRandomElemnt(['base.png']);
     return { background, body, head, eye, wall, base };
 };
