@@ -18,7 +18,7 @@ const iconOptions = {
     backgrounds: ['Backgrounds/2.png', 'Backgrounds/3.png', 'Backgrounds/plain.png'],
     bodys: ['empty.png', 'Body/chef.png', 'props/hood.png', 'props/plain.png', 'props/suit.png', 'Body/sweater.png'],
     heads: ['empty.png', 'props/afro.png', 'props/blonde.png', 'props/chef.png', 'props/flat.png', 'props/shark.png', 'props/wiff.png', 'props/construction.png', 'props/crown.png','props/gladiator.png', 'props/pirate.png', 'props/redcross.png', 'props/sailor.png'],
-    walls: ['empty.png', 'Wall/brick.png', 'Wall/building.png', 'Wall/bus.png', 'Wall/cake.png', 'Wall/cloud.png', 'Wall/door.png', 'Wall/ice.png', 'Wall/tree.png'],
+    walls: ['Wall/brick.png', 'Wall/building.png', 'Wall/bus.png', 'Wall/cake.png', 'Wall/cloud.png', 'Wall/door.png', 'Wall/ice.png', 'Wall/tree.png'],
     bases: ['base.png'],
     eyes: ['empty.png', 'props/maxshy.png', 'props/mog.png', 'props/shades.png']
 
